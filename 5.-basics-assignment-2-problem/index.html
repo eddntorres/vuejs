@@ -22,12 +22,12 @@
       <button v-on:click="clickAlert">Show Alert</button>
       <hr />
       <!-- 2) Register the user input on "keydown" and output it in the paragraph (hint: event.target.value helps) -->
-      <input v-on:keydown="" type="text" />
-      <p>OUTPUT</p>
+      <input v-on:keydown="inputChange($event)" type="text" />
+      <p>{{inputValue}}</p>
       <hr />
       <!-- 3) Repeat 2) but only output the entered value if the ENTER key was pressed -->
-      <input type="text" />
-      <p>OUTPUT</p>
+      <input v-on:keyup.enter="inputChange2($event)" type="text" />
+      <p>{{inputValue2}}</p>
     </section>
     <script src="https://unpkg.com/vue@next" defer></script>
     <script src="app.js" defer></script>    
