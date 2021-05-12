@@ -1,6 +1,7 @@
 <template>
     <section>
         <header><h1>My Friends</h1></header>
+        <new-friend @send-form="addNewFriend"></new-friend>
         <ul>
             <friend-contact 
             v-for="friend in friends" 
@@ -47,7 +48,19 @@ export default {
       toggleFavoriteStatus(friendId){
         const identifiedFriend = this.friends.find(friend=> friend.id===friendId);
         identifiedFriend.isFavorite = !identifiedFriend.isFavorite;
+      },
+      addNewFriend(newName, newPhone, newEmail){
+        const newFriendContact= {
+          id: new Date().toISOString(),
+          name: newName,
+          phone: newPhone,
+          email: newEmail,
+          isFavorite: false
+        }
+        this.friends.push(newFriendContact);
+
       }
+
     }
 };
 </script>
